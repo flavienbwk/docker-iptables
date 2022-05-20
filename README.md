@@ -12,8 +12,11 @@ Let's say you want to secure a production server exposed on your network where y
 
 Docker iptables and UFW iptables are independent. Meaning that you can try enabling UFW blocking _all_ ports and find your containers still accessible.
 
-This is due to Docker using [its own iptables chains](https://docs.docker.com/network/iptables/#add-iptables-policies-before-dockers-rules) : `DOCKER` and `DOCKER-USER`
+This is due to Docker using [its own iptables chains](https://docs.docker.com/network/iptables/#add-iptables-policies-before-dockers-rules) : `DOCKER` and `DOCKER-USER`, which are evaluated before the classic `FORWARD` chain (managed by UFW).
 
 ## Combining UFW with iptables
 
 I recommend combining UFW with iptables managing our Docker network. BTW : UFW uses iptables under the hood.
+
+- UFW : managing non-Docker / system ports
+- custom Docker iptables : managing Docker apps ports
