@@ -16,7 +16,7 @@ This is due to Docker using [its own iptables chains](https://docs.docker.com/ne
 
 ## Combining UFW with iptables
 
-I recommend combining UFW with iptables managing our Docker network. BTW : UFW uses iptables under the hood. The technics described here don't require disabling iptables in the Docker daemon. Which is good.
+I recommend combining UFW with iptables managing our Docker network. BTW : UFW uses iptables under the hood. The technics described here does not require disabling iptables in the Docker daemon. [Which is good](#problem).
 
 - UFW : managing non-Docker / system ports
 - custom Docker iptables : managing Docker apps ports
